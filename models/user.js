@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      user.hasMany(models.location);
+      user.hasOne(models.level);
       // define association here
     }
   }
@@ -26,6 +28,25 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      imageUrl: {
+        type: DataTypes.STRING,
+      },
+      gender: {
+        type: DataTypes.BOOLEAN,
+      },
+
+      age: {
+        type: DataTypes.INTEGER,
+      },
+      telephone: {
+        type: DataTypes.INTEGER,
+      },
+      location: {
+        type: DataTypes.STRING,
+      },
+      levelId: {
+        type: DataTypes.STRING,
       },
     },
     {
