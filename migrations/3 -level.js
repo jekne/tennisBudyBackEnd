@@ -15,6 +15,9 @@ module.exports = {
         //   key: "id",
         // },
       },
+      checkLevel: {
+        type: Sequelize.BOOLEAN,
+      },
       description: {
         type: Sequelize.TEXT,
       },

@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       levelRateFixed: DataTypes.STRING,
       description: DataTypes.TEXT,
+      checkLevel: DataTypes.BOOLEAN,
     },
     {
       sequelize,

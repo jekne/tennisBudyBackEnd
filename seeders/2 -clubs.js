@@ -13,6 +13,8 @@ module.exports = {
           adress: "Koenenkade 8",
           zipCode: "1081 KH Amsterdam",
           rateClub: "5",
+          imageUrl:
+            "https://www.amstelveenz.nl/resize/upload/60/5921/logo_amstelpark_tennis_amsterdam-NEWSLARGELOGO.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -24,6 +26,8 @@ module.exports = {
           adress: "August Vermeylenstraat 50",
           zipCode: "1064 AB Amsterdam",
           rateClub: "5",
+          imageUrl:
+            "https://sloterplas.baanreserveren.nl/images/logos/clubs/351.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -35,6 +39,7 @@ module.exports = {
           adress: "Nieuwe Kalfjeslaan 19a",
           zipCode: "1182 AA Amstelveen",
           rateClub: "5",
+          imageUrl: "https://www.tcamsterdam.net/images/logo@2x.png",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -46,6 +51,8 @@ module.exports = {
           adress: "Van der Boechorststraat 38",
           zipCode: "1081BT Amsterdam",
           rateClub: "5",
+          imageUrl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL0WEEtDa82k-KwsTRooZBUIs_l34bGvFvpQ&usqp=CAU",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -57,6 +64,8 @@ module.exports = {
           adress: "Kattenlaan 13",
           zipCode: "1054KA Amsterdam",
           rateClub: "5",
+          imageUrl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS61H8ogXjkA_Z6qmlSYf1NNH25195XUJZ4Dg&usqp=CAU",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
