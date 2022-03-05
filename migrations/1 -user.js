@@ -40,6 +40,9 @@ module.exports = {
       levelId: {
         type: Sequelize.STRING,
       },
+      description: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -42,6 +42,9 @@ module.exports = (sequelize, DataTypes) => {
       telephone: {
         type: DataTypes.INTEGER,
       },
+      description: {
+        type: DataTypes.STRING,
+      },
       location: {
         type: DataTypes.STRING,
       },
