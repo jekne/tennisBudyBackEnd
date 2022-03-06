@@ -22,12 +22,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       email: {
         type: DataTypes.STRING,
-        unique: true,
-        allowNull: false,
+        // unique: true,
+        // allowNull: false,
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
       imageUrl: {
         type: DataTypes.STRING,
