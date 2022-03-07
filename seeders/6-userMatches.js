@@ -3,65 +3,65 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert(
-      "matches",
+      "userMatches",
       [
         {
-          winnerId: 3,
-          date: "2022-03-03",
+          userId: 3,
+          matchId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          winnerId: 4,
-          date: "2022-03-03",
+          userId: 4,
+          matchId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          winnerId: 9,
-          date: "2022-04-03",
+          userId: 9,
+          matchId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          winnerId: 7,
-          date: "2022-04-04",
+          userId: 7,
+          matchId: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          winnerId: 8,
-          date: "2022-04-03",
+          userId: 8,
+          matchId: 5,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          winnerId: 10,
-          date: "2022-07-02",
+          userId: 10,
+          matchId: 6,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          winnerId: 4,
-          date: "2022-07-02",
+          userId: 4,
+          matchId: 7,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          winnerId: 9,
-          date: "2022-07-02",
+          userId: 9,
+          matchId: 8,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          winnerId: 5,
-          date: "2022-07-02",
+          userId: 5,
+          matchId: 9,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          winnerId: 3,
-          date: "2022-01-02",
+          userId: 3,
+          matchId: 10,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -80,7 +80,7 @@ module.exports = {
    */
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("matches", null, {});
+    await queryInterface.bulkDelete("userMatches", null, {});
     /**
      * Add commands to revert seed here.
      *

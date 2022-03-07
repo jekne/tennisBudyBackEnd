@@ -1,24 +1,21 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("sets", {
+    await queryInterface.createTable("levels", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      match: {
-        type: Sequelize.INTEGER,
+      levelRateFixed: {
+        type: Sequelize.STRING,
       },
-      set: {
-        type: Sequelize.INTEGER,
+      checkLevel: {
+        type: Sequelize.BOOLEAN,
       },
-      userId: {
-        type: Sequelize.INTEGER,
-      },
-      score: {
-        type: Sequelize.INTEGER,
+      description: {
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +28,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("sets");
+    await queryInterface.dropTable("levels");
   },
 };

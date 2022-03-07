@@ -1,25 +1,25 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("levels", {
+    await queryInterface.createTable("matches", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      levelRateFixed: {
-        type: Sequelize.STRING,
-        // references: {
-        //   model: "users",
-        //   key: "id",
-        // },
+
+      winnerId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
-      checkLevel: {
-        type: Sequelize.BOOLEAN,
-      },
-      description: {
-        type: Sequelize.TEXT,
+      date: {
+        type: Sequelize.DATEONLY,
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +32,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("levels");
+    await queryInterface.dropTable("matches");
   },
 };

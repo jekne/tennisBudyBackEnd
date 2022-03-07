@@ -10,10 +10,6 @@ module.exports = {
       },
       city: {
         type: Sequelize.STRING,
-        // references: {
-        //   model: "users",
-        //   key: "id",
-        // },
       },
       createdAt: {
         allowNull: false,

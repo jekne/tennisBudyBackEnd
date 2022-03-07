@@ -1,24 +1,30 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("matches", {
+    await queryInterface.createTable("userMatches", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      playerOneId: {
+      userId: {
         type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
-      playerTwoId: {
+      matchId: {
         type: Sequelize.INTEGER,
-      },
-      winnerId: {
-        type: Sequelize.INTEGER,
-      },
-      date: {
-        type: Sequelize.DATEONLY,
+        references: {
+          model: "matches",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +37,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("matches");
+    await queryInterface.dropTable("userMatches");
   },
 };

@@ -6,47 +6,37 @@ module.exports = {
       "locations",
       [
         {
-          city: "Amsterdam",
+          city: "Amsterdam - City Center",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          city: "Amsterdam",
+          city: "Amsterdam - Oost",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          city: "Amsterdam",
+          city: "Amsterdam - Zuid",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          city: "Amsterdam",
+          city: "Amsterdam - Noord",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          city: "Amstelveen",
+          city: "Amsterdam - West",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          city: "Amstelveen",
+          city: "Amsterdam - Boos en Lommer",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          city: "Amstelveen",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          city: "Amstelveen",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          city: "Amstelveen",
+          city: "Amsterdam - Bijlmeer",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
