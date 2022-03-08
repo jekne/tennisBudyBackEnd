@@ -3,7 +3,7 @@ const { Router } = require("express");
 const { toJWT } = require("../auth/jwt");
 const authMiddleware = require("../auth/middleware");
 const User = require("../models/").user;
-
+const Location = require("../models").location;
 const Club = require("../models/").club;
 const Level = require("../models").level;
 const Match = require("../models").match;
@@ -74,6 +74,11 @@ router.post("/signup", async (req, res) => {
 // - checking if a token is (still) valid
 router.get("/me", authMiddleware, async (req, res) => {
   // don't send back the password hash
+  // const space = await User.findOne({
+  //   where: { userId: req.user.id },
+  //   include: [Location],
+  // });
+
   delete req.user.dataValues["password"];
   res.status(200).send({ ...req.user.dataValues });
 });

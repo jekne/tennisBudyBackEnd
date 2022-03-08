@@ -15,9 +15,7 @@ const authMiddleware = require("../auth/middleware");
 router.get("/", async (req, res, next) => {
   try {
     const users = await User.findAll({
-      include: {
-        model: Level,
-      },
+      include: [{ model: Location }, { model: Level }],
     });
     if (!users) {
       res.status(404).send("Something went wrong!");
@@ -80,10 +78,10 @@ router.get("/:id", async (req, res, next) => {
     console.log("id", id);
 
     const userById = await User.findByPk(id, {
-      include: {
-        model: Match,
-        attributes: ["winnerId", "date"],
-      },
+      // include: {
+      //   model: Match,
+      //   attributes: ["winnerId", "date"],
+      // },
       // include: { model: Sets },
       // include: { model: UserMatches },
     });
@@ -103,62 +101,61 @@ router.get("/:id", async (req, res, next) => {
 
 //UPDATE USER
 
-//http PUT :4000/users/1  name=johann,password=1234,age=34,description=good,email=joj,gender=true,imageUrl=mnice,levelId=7,location=amsterdam,telephone=302
+//http PUT :4000/users/update/1  name=johann,password=1234,age=34,description=good,email=joj,gender=true,imageUrl=mnice,levelId=7,location=amsterdam,telephone=302
 
-router.patch("/:id", async (req, res, next) => {
+router.put("/update/:id", authMiddleware, async (req, res, next) => {
   try {
     // HERE WE GET OUT THE ID OF THE USER THAT MADE THE TOKEN
-    // const logged_in_user = req.user.id;
+    const logged_in_user = req.user.id;
 
-    // console.log("THIS IS THE LOGGED_IN_USER", logged_in_user);
-    // const user = await User.findByPk(logged_in_user);
+    console.log("THIS IS THE LOGGED_IN_USER", logged_in_user);
+    const user = await User.findByPk(logged_in_user);
 
-    // if (!user) {
-    //   res.status(404).send("The user was not found");
-    // } else {
-    //   res.status(200).send({ message: "authorized", user: user });
+    if (!user) {
+      res.status(404).send("The user was not found");
+    } else {
+      res.status(200).send({ message: "authorized", user: user });
 
-    const id = parseInt(req.params.id);
-    console.log("id", id);
+      const id = parseInt(req.params.id);
+      console.log("id", id);
+      console.log("this is the body!!", req.body);
+      const {
+        name,
+        age,
+        description,
+        email,
+        gender,
+        imageUrl,
+        levelId,
 
-    const {
-      name,
-      age,
-      description,
-      email,
-      gender,
-      imageUrl,
-      levelId,
-      location,
-      telephone,
-      password,
-    } = req.body;
+        telephone,
+        password,
+      } = req.body;
 
-    console.log("name", name);
-    const users = await User.findByPk(id);
-    // console.log("users found", users);
+      console.log("name", name);
+      const users = await User.findByPk(id);
+      // console.log("users found", users);
 
-    if (!users) {
-      res.status(404).send(`The id provided ${id}, was not founded`);
+      if (!users) {
+        res.status(404).send(`The id provided ${id}, was not founded`);
+      }
+
+      const updateUser = await users.update({
+        name: name,
+        age: age,
+        description: description,
+        email: email,
+        gender: gender,
+        imageUrl: imageUrl,
+        password: password,
+        telephone: telephone,
+      });
+
+      res.status(200).send({
+        message: `This is the User correspondent a id ${id},  was update`,
+        updateUser: updateUser,
+      });
     }
-
-    const updateUser = await users.update({
-      name: name,
-      age: age,
-      description: description,
-      email: email,
-      gender: gender,
-      imageUrl: imageUrl,
-      levelId: levelId,
-      location: location,
-      telephone: telephone,
-      password: password,
-    });
-
-    res.status(200).send({
-      message: `This is the User correspondent a id ${id},  was update`,
-      updateUser: updateUser,
-    });
   } catch (e) {
     console.log(e);
   }
