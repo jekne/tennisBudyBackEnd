@@ -3,6 +3,12 @@ const { Router } = require("express");
 const { toJWT } = require("../auth/jwt");
 const authMiddleware = require("../auth/middleware");
 const User = require("../models/").user;
+
+const Club = require("../models/").club;
+const Level = require("../models").level;
+const Match = require("../models").match;
+const Sets = require("../models").set;
+const UserMatches = require("../models").userMatche;
 const { SALT_ROUNDS } = require("../config/constants");
 
 const router = new Router();
@@ -24,7 +30,7 @@ router.post("/login", async (req, res, next) => {
         message: "User with that email not found or password incorrect",
       });
     }
-
+    // const matches = await Match.findAll({ where: {} });
     delete user.dataValues["password"]; // don't send back the password hash
     const token = toJWT({ userId: user.id });
     return res.status(200).send({ token, ...user.dataValues });

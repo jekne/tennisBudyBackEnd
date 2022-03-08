@@ -34,7 +34,7 @@ module.exports = {
       telephone: {
         type: Sequelize.INTEGER,
       },
-      location: {
+      locationId: {
         type: Sequelize.INTEGER,
         references: {
           model: "locations",
