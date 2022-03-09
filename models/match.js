@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       match.belongsToMany(models.user, {
         through: "userMatches",
-        foreignKey: "userId",
+        foreignKey: "matchId",
       });
       // match.hasMany(models.set, {
       //   foreignKey: "matchId",

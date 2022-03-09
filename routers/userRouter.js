@@ -78,10 +78,10 @@ router.get("/:id", async (req, res, next) => {
     console.log("id", id);
 
     const userById = await User.findByPk(id, {
-      // include: {
-      //   model: Match,
-      //   attributes: ["winnerId", "date"],
-      // },
+      include: {
+        model: Match,
+        attributes: ["winnerId", "date"],
+      },
       // include: { model: Sets },
       // include: { model: UserMatches },
     });
@@ -160,6 +160,30 @@ router.put("/update/:id", authMiddleware, async (req, res, next) => {
     console.log(e);
   }
   next();
+});
+
+//GET  THE USERS  BY ID INCLUDING LEVEL AND LOCATION
+//http -v GET :4000/users/details/3
+
+router.get("/details/:id", async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id);
+    console.log("id", id);
+    const users = await User.findByPk(id, {
+      include: [{ model: Location }, { model: Level }],
+    });
+    if (!users) {
+      res.status(404).send("Something went wrong!");
+    } else {
+      res.status(200).send({
+        message: "Users by id with level and location!!!",
+        users: users,
+      });
+    }
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
 });
 
 module.exports = router;
