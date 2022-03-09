@@ -7,6 +7,9 @@ const authRouter = require("./routers/auth");
 const clubRouter = require("./routers/clubsRouter");
 const levelRouter = require("./routers/levelRouter");
 const userRouter = require("./routers/userRouter");
+const matchesRouter = require("./routers/matchesRouter");
+const setsRouter = require("./routers/setsRouter");
+const usermatchesRouter = require("./routers/userMatchesRouter");
 
 // Create an express app
 const app = express();
@@ -38,6 +41,9 @@ app.use("/auth", authRouter);
 app.use("/clubs", clubRouter);
 app.use("/levels", levelRouter);
 app.use("/users", userRouter);
+app.use("/matches", matchesRouter);
+app.use("/sets", setsRouter);
+app.use("/usermatches", usermatchesRouter);
 
 // POST endpoint which requires a token for testing purposes, can be removed
 app.post("/authorized_post_request", authMiddleWare, (req, res) => {

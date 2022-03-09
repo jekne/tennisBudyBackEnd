@@ -52,23 +52,6 @@ router.get("/location", async (req, res, next) => {
   }
 });
 
-//GET ALL THE MATCHES
-// http -v GET :4000/users/matches
-
-router.get("/matches", async (req, res, next) => {
-  try {
-    const matches = await Match.findAll();
-    if (!matches) {
-      res.status(404).send("Something went wrong!");
-    } else {
-      res.status(200).send({ message: "All the Matches!!!", matches: matches });
-    }
-  } catch (e) {
-    console.log(e);
-    next(e);
-  }
-});
-
 //GET USERS BY ID
 //http -v GET :4000/users/4
 
@@ -80,7 +63,7 @@ router.get("/:id", async (req, res, next) => {
     const userById = await User.findByPk(id, {
       include: {
         model: Match,
-        attributes: ["winnerId", "date"],
+        include: Sets,
       },
       // include: { model: Sets },
       // include: { model: UserMatches },
@@ -98,7 +81,9 @@ router.get("/:id", async (req, res, next) => {
     next(e);
   }
 });
-
+//  include: {
+// model: Match,
+// attributes: ["winnerId", "date"],
 //UPDATE USER
 
 //http PUT :4000/users/update/1  name=johann,password=1234,age=34,description=good,email=joj,gender=true,imageUrl=mnice,levelId=7,location=amsterdam,telephone=302

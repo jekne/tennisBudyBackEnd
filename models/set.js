@@ -8,9 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // this.belongsTo(models.match, {
-      //   foreignKey: "matchId",
-      // });
+      set.belongsTo(models.match);
       // define association here
     }
   }

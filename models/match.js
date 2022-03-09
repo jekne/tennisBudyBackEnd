@@ -12,9 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         through: "userMatches",
         foreignKey: "matchId",
       });
-      // match.hasMany(models.set, {
-      //   foreignKey: "matchId",
-      // });
+      match.hasMany(models.set);
       // define association here
       // match.belongsTo(models.userMatches, {
       //   foreignKey: "matchId",
