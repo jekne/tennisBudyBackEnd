@@ -6,7 +6,7 @@ const Level = require("../models").level;
 const Match = require("../models").match;
 const Sets = require("../models").set;
 const Location = require("../models").location;
-const UserMatches = require("../models").userMatche;
+const UserMatches = require("../models").userMatches;
 const authMiddleware = require("../auth/middleware");
 
 //GET ALL THE USERS INCLUDING LEVEL
@@ -72,7 +72,7 @@ router.get("/:id", async (req, res, next) => {
       res.status(404).send("Something went wrong!");
     } else {
       res.status(200).send({
-        message: "All the users with matches!!!",
+        message: "All the users with matches and Sets!!!",
         userById: userById,
       });
     }

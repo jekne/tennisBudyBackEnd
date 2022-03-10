@@ -10,13 +10,15 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       set.belongsTo(models.match);
       // define association here
+      set.belongsTo(models.user);
     }
   }
   set.init(
     {
       matchId: DataTypes.INTEGER,
       set: DataTypes.INTEGER,
-      // userId: DataTypes.INTEGER,
+      // I am bring back the userId
+      userId: DataTypes.INTEGER,
       score: DataTypes.INTEGER,
     },
     {

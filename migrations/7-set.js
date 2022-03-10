@@ -20,15 +20,16 @@ module.exports = {
       set: {
         type: Sequelize.INTEGER,
       },
-      // userId: {
-      //   type: Sequelize.INTEGER,
-      //   references: {
-      //     model: "users",
-      //     key: "id",
-      //   },
-      //   onUpdate: "CASCADE",
-      //   onDelete: "SET NULL",
-      // },
+      //I am bring back the userId
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
+      },
       score: {
         type: Sequelize.INTEGER,
       },

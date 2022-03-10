@@ -6,7 +6,7 @@ const Level = require("../models").level;
 const Match = require("../models").match;
 const Sets = require("../models").set;
 const Location = require("../models").location;
-const UserMatches = require("../models").userMatche;
+const UserMatches = require("../models").userMatches;
 const authMiddleware = require("../auth/middleware");
 
 //GET ALL THE MATCHES

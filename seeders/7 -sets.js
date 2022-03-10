@@ -6,7 +6,8 @@ module.exports = {
       {
         matchId: 1,
         set: 1,
-        // userId: 3,
+        //I am bring back the user id
+        userId: 3,
         score: 6,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -14,7 +15,7 @@ module.exports = {
       {
         matchId: 1,
         set: 1,
-        // userId: 4,
+        userId: 4,
         score: 2,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -22,7 +23,7 @@ module.exports = {
       {
         matchId: 1,
         set: 2,
-        // userId: 3,
+        userId: 3,
         score: 6,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -30,7 +31,7 @@ module.exports = {
       {
         matchId: 1,
         set: 2,
-        // userId: 4,
+        userId: 4,
         score: 0,
         createdAt: new Date(),
         updatedAt: new Date(),

@@ -6,7 +6,7 @@ module.exports = {
       "matches",
       [
         {
-          winnerId: 4,
+          winnerId: 3,
           date: "2022-03-03",
           createdAt: new Date(),
           updatedAt: new Date(),
