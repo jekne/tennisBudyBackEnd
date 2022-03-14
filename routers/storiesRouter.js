@@ -37,6 +37,7 @@ router.get("/stories/:id", async (req, res, next) => {
     const stories = await Story.findAll({
       where: { userId: id },
       include: { model: User, attributes: ["imageUrl", "name"] },
+      order: [["updatedAt", "DESC"]],
     });
     if (!stories) {
       res.status(404).send("Something went wrong!");
@@ -52,46 +53,50 @@ router.get("/stories/:id", async (req, res, next) => {
 // create a new story:
 //http -v POST :4000/stories/4  content=NiceNewContent
 
-router.post("/:userId", async (req, res, next) => {
+router.post("/:userId", authMiddleware, async (req, res, next) => {
   try {
     // HERE WE GET OUT THE ID OF THE USER THAT MADE THE TOKEN
-    // const logged_in_user = req.user.id;
+    const logged_in_user = req.user.id;
+    const email = req.user.email;
+    const imageUrl = req.user.imageUrl;
+    const name = req.user.name;
 
-    // console.log("THIS IS THE LOGGED_IN_USER", logged_in_user);
-    // const user = await User.findByPk(logged_in_user);
+    console.log("this is teh email", email);
+    console.log(" imageUrl", imageUrl);
 
-    // if (!user) {
-    //   res.status(404).send("The user was not found");
-    // } else {
-    //   res.status(200).send({ message: "authorized", user: user });
-    const { content } = req.body;
-    const params = req.params;
-    const userId = parseInt(req.params.userId);
-    console.log("my id", userId);
+    console.log("THIS IS THE LOGGED_IN_USER", logged_in_user);
+    const user = await User.findByPk(logged_in_user);
 
-    if (!content) {
-      res.status(404).send("Need to provided a content");
-    }
-
-    const checkuserId = await Story.findByPk(userId);
-    if (!checkuserId) {
-      res.status(404).send("This user id do not belong a valid story");
-    }
-    const createNewStory = await Story.create({
-      content,
-
-      userId,
-    });
-
-    if (!createNewStory) {
-      res.status(404).send("Something get wrong");
+    if (!user) {
+      res.status(404).send("The user was not found");
     } else {
-      res.status(200).send({
-        message: `The new story with content ${content} was created`,
-        createNewStory: createNewStory,
+      // res.status(200).send({ message: "authorized", user: user });
+
+      const { content } = req.body;
+      const userId = parseInt(req.params.userId);
+      console.log("receiver id", userId);
+
+      if (!content) {
+        res.status(404).send("Need to provided a content");
+      }
+
+      const createNewStory = await Story.create({
+        content,
+        email,
+        imageUrl,
+        userId,
+        name,
       });
+
+      if (!createNewStory) {
+        res.status(404).send("Something went wrong");
+      } else {
+        res.status(200).send({
+          message: `The new story with content "${content}" was created`,
+          newStory: createNewStory,
+        });
+      }
     }
-    // }
   } catch (e) {
     console.log(e);
   }

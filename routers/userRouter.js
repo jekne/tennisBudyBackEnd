@@ -112,7 +112,7 @@ router.put("/update/:id", authMiddleware, async (req, res, next) => {
         gender,
         imageUrl,
         levelId,
-
+        location,
         telephone,
         password,
       } = req.body;
@@ -134,6 +134,7 @@ router.put("/update/:id", authMiddleware, async (req, res, next) => {
         imageUrl: imageUrl,
         password: password,
         telephone: telephone,
+        location: location,
       });
 
       res.status(200).send({

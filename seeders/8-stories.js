@@ -5,28 +5,25 @@ module.exports = {
     await queryInterface.bulkInsert("stories", [
       {
         content: "Hey rafa lets play?",
-
-        userId: 3,
+        imageUrl:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpIFlFJmbFkMs-hsuMSdec7AEy9Rd_1ON4Q&usqp=CAU",
+        email: "r@r.com",
+        userId: 4,
+        name: "Roger Federer",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         content: "you never beat me!",
-
-        userId: 4,
+        imageUrl:
+          "https://cdn-japantimes.com/wp-content/uploads/2022/02/np_file_143928.jpeg",
+        email: "rafa@rafa.com",
+        name: "Rafael Nadal",
+        userId: 3,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
     ]);
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-     */
   },
 
   down: async (queryInterface, Sequelize) => {
