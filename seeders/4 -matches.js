@@ -11,12 +11,12 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-        // {
-        //   winnerId: 4,
-        //   date: "2022-03-03",
-        //   createdAt: new Date(),
-        //   updatedAt: new Date(),
-        // },
+        {
+          winnerId: 3,
+          date: "2022-03-03",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
         // {
         //   winnerId: 9,
         //   date: "2022-04-03",

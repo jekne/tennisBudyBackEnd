@@ -9,7 +9,7 @@ module.exports = {
           levelRateFixed: "1.0",
           checkLevel: false,
           description:
-            "A person with a tennis rating of 1.0 is essentially new to tennis and first stepping out onto the court. A person with a ",
+            "A person with a tennis rating of 1.0 is essentially new to tennis and first stepping out onto the court.",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -17,7 +17,7 @@ module.exports = {
           levelRateFixed: "1.5",
           checkLevel: false,
           description:
-            "has limited experience on the court and their main goal is trying to keep the ball in play. ",
+            "A person with a tennis rating of 1.5 has limited experience on the court and their main goal is trying to keep the ball in play. ",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

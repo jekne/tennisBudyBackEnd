@@ -17,18 +17,18 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-        // {
-        //   userId: 9,
-        //   matchId: 3,
-        //   createdAt: new Date(),
-        //   updatedAt: new Date(),
-        // },
-        // {
-        //   userId: 7,
-        //   matchId: 4,
-        //   createdAt: new Date(),
-        //   updatedAt: new Date(),
-        // },
+        {
+          userId: 3,
+          matchId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 4,
+          matchId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
         // {
         //   userId: 8,
         //   matchId: 5,

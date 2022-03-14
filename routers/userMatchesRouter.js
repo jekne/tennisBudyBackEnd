@@ -91,7 +91,39 @@ router.get("/:id", async (req, res, next) => {
 // model: Match,
 // attributes: ["winnerId", "date"],
 //UPDATE USER
+/////////////////////
 
+//FIND TROUGH THE ID OF THE PERSON WHO IS LOGGED IN WITCH MATCH HE PLAYED
+//http -v GET :4000/usermatches/allmatches/1
+router.get("/allmatches/:id", async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id);
+    console.log("id", id);
+    const whoPlayedThatMatch = await UserMatches.findAll({
+      where: { userId: id },
+      include: { model: User, attributes: ["name"] },
+    });
+
+    // const whoPlayedThatMatch = await User.findByPk(id, {
+    // where: { matchId: id },
+    // include: { model: Match, where: { winnerId: id }, include: Sets },
+    // include: { model: Match, attributes: ["winnerId", "name"] },
+    // });
+    if (!whoPlayedThatMatch) {
+      res.status(404).send("Something went wrong!");
+    } else {
+      res.status(200).send({
+        message: "User Matches by the matchId!!!",
+        whoPlayedThatMatch: whoPlayedThatMatch,
+      });
+    }
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
+});
+
+///////
 // FIND TROUGH THE ID OF THE PERSON WHO IS LOGGED IN WITCH MATCH HE PLAYED
 
 //GET MACTHES BY ID, WHO PLAYED THAT SPECIFIC MATCH // now i have the endpoint with the matchid
