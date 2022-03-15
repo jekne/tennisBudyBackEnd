@@ -103,7 +103,6 @@ router.put("/update/:id", authMiddleware, async (req, res, next) => {
 
       const id = parseInt(req.params.id);
       console.log("id", id);
-      console.log("this is the body!!", req.body);
       const {
         name,
         age,
@@ -117,7 +116,7 @@ router.put("/update/:id", authMiddleware, async (req, res, next) => {
         password,
       } = req.body;
 
-      console.log("name", name);
+      console.log("this is the body!!", req.body);
       const users = await User.findByPk(id);
       // console.log("users found", users);
 
@@ -125,21 +124,21 @@ router.put("/update/:id", authMiddleware, async (req, res, next) => {
         res.status(404).send(`The id provided ${id}, was not founded`);
       }
 
-      const updateUser = await users.update({
-        name: name,
-        age: age,
-        description: description,
-        email: email,
+      await users.update({
+        name: !name ? users.name : name,
+        age: !age ? users.age : age,
+        description: !description ? users.description : description,
+        email: !email ? users.email : email,
         gender: gender,
-        imageUrl: imageUrl,
-        password: password,
-        telephone: telephone,
-        location: location,
+        imageUrl: !imageUrl ? users.imageUrl : imageUrl,
+        password: !password ? users.password : password,
+        telephone: !telephone ? users.telephone : telephone,
+        locationId: !location ? users.location : location,
       });
 
       res.status(200).send({
         message: `This is the User correspondent a id ${id},  was update`,
-        updateUser: updateUser,
+        updateUser: users,
       });
     }
   } catch (e) {
