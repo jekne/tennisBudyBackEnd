@@ -10,7 +10,7 @@ const UserMatches = require("../models").userMatches;
 const Chats = require("../models").chat;
 const authMiddleware = require("../auth/middleware");
 
-//GET ALL THE CHATS
+//GET ALL THE CHAT
 //http -v GET :4000/chats
 
 router.get("/", async (req, res, next) => {
