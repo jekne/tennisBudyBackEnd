@@ -65,8 +65,6 @@ router.get("/:id", async (req, res, next) => {
         model: Match,
         include: Sets,
       },
-      // include: { model: Sets },
-      // include: { model: UserMatches },
     });
     if (!userById) {
       res.status(404).send("Something went wrong!");
@@ -81,10 +79,6 @@ router.get("/:id", async (req, res, next) => {
     next(e);
   }
 });
-//  include: {
-// model: Match,
-// attributes: ["winnerId", "date"],
-//UPDATE USER
 
 //http PUT :4000/users/update/1  name=johann,password=1234,age=34,description=good,email=joj,gender=true,imageUrl=mnice,levelId=7,location=amsterdam,telephone=302
 
@@ -110,7 +104,6 @@ router.put("/update/:id", authMiddleware, async (req, res, next) => {
         email,
         gender,
         imageUrl,
-        levelId,
         location,
         telephone,
         password,
@@ -118,7 +111,6 @@ router.put("/update/:id", authMiddleware, async (req, res, next) => {
 
       console.log("this is the body!!", req.body);
       const users = await User.findByPk(id);
-      // console.log("users found", users);
 
       if (!users) {
         res.status(404).send(`The id provided ${id}, was not founded`);

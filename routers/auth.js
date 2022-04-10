@@ -30,8 +30,8 @@ router.post("/login", async (req, res, next) => {
         message: "User with that email not found or password incorrect",
       });
     }
-    // const matches = await Match.findAll({ where: {} });
-    delete user.dataValues["password"]; // don't send back the password hash
+
+    delete user.dataValues["password"];
     const token = toJWT({ userId: user.id });
     return res.status(200).send({ token, ...user.dataValues });
   } catch (error) {
@@ -69,7 +69,7 @@ router.post("/signup", async (req, res) => {
       locationId: location,
     });
 
-    delete newUser.dataValues["password"]; // don't send back the password hash
+    delete newUser.dataValues["password"];
 
     const token = toJWT({ userId: newUser.id });
 
@@ -85,16 +85,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// The /me endpoint can be used to:
-// - get the users email & name using only their token
-// - checking if a token is (still) valid
 router.get("/me", authMiddleware, async (req, res) => {
-  // don't send back the password hash
-  // const space = await User.findOne({
-  //   where: { userId: req.user.id },
-  //   include: [Location],
-  // });
-
   delete req.user.dataValues["password"];
   res.status(200).send({ ...req.user.dataValues });
 });
